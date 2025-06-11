@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>13-단축평갓값</title>
+</head>
+<body>
+  <script>
+    let username = '';
+    let displayName = username || '이름없음';
+    // or연산자의 앞 뒤로 조건문이 아닌 문자열이 오고 있음.
+    // 그럼에도 or연산이 실행됨.
+    // 왜? 자바스크립트는 필요할 경우 자료의 유형을 임의로 변경해서 처리하니끼
+    // 문자열이 불리언 유형으로 변환될 때, 빈 문자열은 false로, 그 외에는 모두 true로 처리됨.
+    console.log(displayName);
+
+    let isLogin = false;
+    !isLogin && console.log('환영합니다!');
+
+    function greet (name) {
+      let username = name || '회원';
+      console.log(`안녕하세요, ${username}님!`);
+    }
+    greet('홍길동');
+    greet();
+  </script>
+</body>
+</html>

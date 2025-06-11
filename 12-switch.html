@@ -11,8 +11,98 @@
 
     switch(day) {
       case '월': 
+        console.log('한 주의 시작입니다!');
+        break;
       case '화': 
+        console.log('화이팅!');
+        break;
       default: 
+        console.log('오늘도 힘내세요!');
+    }
+
+    // 등급 메세지
+    let grade = 'A';
+    switch(grade) {
+      case 'A': 
+        console.log('우수');
+        break;
+      case 'B':
+        console.log('좋아요');
+        break;
+      case 'C':
+        console.log('보통입니다.');
+        break;
+      default: 
+        console.log('노력이 필요합니다.');
+    }
+
+    // 과일 이름
+    let fruit = 'melon';
+    switch(fruit) {
+      case 'banana':
+        console.log('노란색');
+        break;
+      case 'apple':
+        console.log('빨간색');
+        break;
+      case 'grape':
+        console.log('보라색');
+        break;
+      default:
+        console.log('색상 정보 없음');
+    }
+
+    // 요일
+    let num = 3;
+    switch(num) {
+      case 1:
+        console.log('월요일');
+        break;
+      case 2:
+        console.log('화요일');
+        break;
+      case 3:
+        console.log('수요일');
+        break;
+      case 4:
+        console.log('목요일');
+        break;
+      case 5:
+        console.log('금요일');
+        break;
+      default:
+        console.log('주말입니다');
+    }
+
+    // 영화 등급
+    let grade2 = 'PG';
+    switch(grade2) {
+      case 'R':
+        console.log('성인전용');
+        break;
+      case 'PG': 
+        console.log('보호자 동반 권장');
+        break;
+      case 'G':
+        console.log('15세 이상');
+      default: 
+        console.log('전체 연령');
+    }
+
+    // 사용자 역할
+    let role = 'user';
+    switch(role) {
+      case 'admin': 
+        console.log('모든권한');
+        break;
+      case 'user': 
+        console.log('일반권한');
+        break;
+      case 'guest': 
+        console.log('읽기전용');
+        break;
+      default: 
+        console.log('권한없음');
     }
   </script>
 </body>
