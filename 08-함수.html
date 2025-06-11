@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08-함수</title>
+</head>
+
+<body>
+    <script>
+        // 예제1
+        function greeting() {
+            function hello(name) {
+                console.log(`hello, ${name}`);
+            }
+
+            let userName = 'John';
+            hello(userName);
+        }
+        greeting();
+
+        // 예제2
+        function calculateTotal(price, quantity) {
+            function getVAT() {
+                return price * quantity * 0.1;
+            }
+            let vat = getVAT();
+            return price * quantity + vat;
+        }
+        let priceApple = calculateTotal(1500, 20);
+        console.log(priceApple);
+
+        // 예제3
+        function getCircleInfo(radius) {
+            function getArea() {
+                return radius * radius * Math.PI;
+            }
+
+            function getCircumference() {
+                return radius * 2 * Math.PI;
+            }
+            let area = getArea();
+            let circumference = getCircumference();
+            return `넓이: ${area}, 둘레: ${circumference}`;
+        }
+        let circle = getCircleInfo(10);
+        console.log(circle);
+
+        // 예제4
+        function printUserInfo(name, age) {
+            function formatName() {
+                return `이름: ${name}`;
+            }
+
+            function formatAge() {
+                return `나이: ${age}세`;
+            }
+            let result = console.log(formatName() + ', ' + formatAge());
+            return result;
+        }
+        let user = printUserInfo('홍길동', 20);
+
+        // 일반함수 vs 함수 표현식 vs 화살표 함수
+        function plus1(a, b) {
+            return a + b;
+        }
+
+        let plus2 = function (a, b) {
+            return a + b;
+        }
+
+        let plus3 = a => a;
+
+        let plus4 = (a, b) => a + b;
+
+        let plus5 = (a, b) => {
+            return a + b;
+        }
+
+        console.log(plus1(10, 20));
+        console.log(plus2(10, 20));
+        console.log(plus3(20));
+        console.log(plus4(10, 20));
+        console.log(plus5(10, 20));
+
+        // 콜백함수
+        function calculator(a, b, order) {
+            return order(a, b);
+        }
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        function multiply(x, y) {
+            return x * y;
+        }
+
+        console.log(calculator(10, 20, add));
+        console.log(calculator(10, 20, multiply));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>03-변수</title>
+</head>
+<body>
+  <h1>03-변수</h1>
+  <script>
+    // 변수 color를 선언함
+    // -> 'color'라는 이름을 가진 창고를 만든다.
+    // var color;
+    // let color;
+
+    // 변수 color를 선언함과 동시에 'red'값을 할당함.
+    // -> 'color'라는 이름을 가진 창고를 만들어, 해당 창고에 'red'값을 보관함.
+    let color = 'red';
+    console.log(color);
+    console.log(typeof(color));
+
+    let point = 15*100;
+    console.log(point);
+
+    console.log('==========');
+
+    let tree = '소나무';
+    console.log(tree);
+
+    let size = 15;
+    console.log(size);
+
+    let isLoading = false;
+    console.log(isLoading);
+
+    let weather = 'sunny';
+    console.log(weather);
+
+    let score = 85;
+    console.log(score);
+
+    let isAdult = true;
+    console.log(isAdult);
+
+    console.log('==========');
+
+    let cup = '물';
+    console.log(cup);
+    cup = '우유'
+    console.log(cup);
+
+    let color2 = 'blue';
+    console.log(color2);
+
+    color2 = 'green';
+    console.log(color2);
+
+    color2 = 'pink';
+    console.log(color2);
+
+    console.log('==========');
+
+    const cube = 4;
+    // cube = 8; 
+    console.log(cube);
+
+    console.log('==========');
+
+    let price = 5000;
+    let quantitiy = 3;
+    let total = price * quantitiy;
+    console.log(total);
+
+    let width = 10;
+    let height = 10;
+    let area = width * height / 2;
+    console.log(area);
+
+    let math = 90;
+    let english = 80;
+    let science = 60;
+    let average = (math + english + science) / 3;
+    console.log(average);
+
+    let price2 = 3000;
+    let quantitiy2 = 5;
+    let total2 = price2 * quantitiy2;
+    console.log(total2);
+
+    let year = 2025;
+    let birthYear = 2002;
+    let age = year - birthYear;
+    console.log(age);
+
+    console.log('==========');
+
+    let week = '수';
+    console.log('오늘은 ' + week + '요일 입니다.');
+    console.log(`오늘은 "${week}요일" 입니다.`);
+
+    let username = '홍길동';
+    let greetting = `${username}님 안녕하세요.`;
+    console.log(greetting);
+
+    let noti = `${username}님의 안전을 위해 더욱더 주의하겠습니다.`;
+    console.log(noti);
+
+    console.log('==========');
+
+    let serialNumber = 93490458;
+    let guide = `${serialNumber} 모델은 이미 구입하셨습니다`;
+    console.log(guide);
+
+    let name = '홍길동';
+    let age2 = 22;
+    let region = '부산';
+    let message = `${region} 지역에서 온 ${age2}살 ${name} 고객입니다.`
+    console.log(message);
+  </script>
+</body>
+</html>

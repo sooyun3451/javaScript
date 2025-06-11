@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>06-함수</title>
+</head>
+<body>
+  <script>
+    // 함수 없이 2개의 사각형 넓이 구하기
+    let width1 = 10;
+    let height1 = 20;
+    let area1 = width1 * height1;
+
+    let width2 = 20;
+    let height2 = 50;
+    let area2 = width2 * height2;
+
+    // 함수 선언하기 = 명령을 한 묶음으로 묶어두기
+    // 함수 내용을 묶는 {}를 블럭단위라고 함
+    function plus() {
+      console.log(100 + 50);
+    }
+
+    // 함수 호출하기 = 함수의 명령 실행하기
+    plus();
+
+    function minus() {
+      console.log(150 - 50);
+    }
+    minus();
+
+    function double() {
+      console.log(254 * 2);
+    }
+    double();
+
+    function greeting(name) { // 매개변수
+      console.log(name, '님, 방문을 환영합니다!');
+    }
+    greeting('홍길동'); // 인수
+    greeting('홍길서');
+
+    function sum(n1, n2) {
+      console.log('n1: ', n1);
+      console.log('n2: ', n2);
+      console.log(n1 + n2);
+    }
+
+    sum(10, 20); // 30
+    sum(2, 3); // 5
+    sum(20); // NaN
+    sum(10, 20, 30) // 30
+
+    console.log('=== triangle ===');
+
+    function triangle(width, height) {
+      console.log(width * height / 2);
+    }
+    triangle(10, 20);
+    triangle(20, 30);
+    triangle(30, 40);
+
+    console.log('=== cube ===');
+
+    function cube(width, length, height) {
+      console.log(width * length * height);
+    }
+    cube(10, 20, 30);
+    cube(10, 11, 12);
+    cube(10, 24, 45);
+
+    console.log('=== ageCalc ===');
+
+    function ageCalc(year, birthYear) {
+      console.log(year - birthYear);
+    }
+    ageCalc(2025, 2002);
+    ageCalc(2025, 1999);
+    ageCalc(2025, 1995);
+
+    function say(msg, user='회원') {
+      console.log(`${user}님의 메세지: ${msg}`);
+    }
+    say('빨간색 카드를 선택해주세요.');
+    say('오른쪽으로 두칸입니다.', '홍길동');
+
+    function calculatePrice(price, quantity=1) {
+      console.log(price * quantity);
+    }
+    calculatePrice(500, 2);
+    calculatePrice(2000);
+    calculatePrice(3000);
+
+    function showInfo(name, age='비공개') {
+      console.log(`${name}의 나이는 ${age}입니다.`);
+    }
+    showInfo('홍길동', 20);
+    showInfo('혿길서');
+    showInfo('홍길남', 30);
+
+    function createUser(id, role='일반 사용자') {
+      console.log(`${id}의 역할은 ${role}입니다.`);
+    }
+    createUser('홍길동');
+    createUser('홍길서', '관리자');
+    createUser('홍길남');
+
+    function aa () {
+      let i = 10;
+    }
+    // console.log(i);
+    // 콘솔 메세지로 i is not defined라고 확인됨
+    // 왜? 변수 i는 aa 함수 내부에서만 사용 가능하기 떄문.
+
+    // 특정 함수 안에 선언된 변수는 해당 함수 안에서만 사용가능
+    // 그래서 aa함수 밖에서 변수 i를 호출하면 존재하지 않는다는 오류 발생 
+
+    function add(a, b) {
+      return a + b;
+    }
+    let addResult = add(10, 5);
+    console.log(addResult * 100); // 1500
+
+
+    function getArea(width, height) {
+      return width * height;
+    }
+    let area = getArea(10, 10);
+    console.log(area);
+
+    function getGreeting(name) {
+      return `반가워요, ${name}님!`;
+    }
+    let greet = getGreeting('홍길동');
+    console.log(greet);
+
+    function toSeconds(minute) {
+      return minute * 60;
+    }
+    let seconds = toSeconds(3);
+    console.log(seconds);
+
+    function colors(c) {
+      let choice = c + ' color';
+      return choice;
+    }
+    let red = colors('red');
+    console.log(red);
+  </script>
+</body>
+</html>

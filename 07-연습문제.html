@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1번
+        console.log(typeof(true));
+
+        // 2번
+        let n1 = 10;
+        console.log(String(n1));
+
+        // 3번
+        let f1 = '123.45';
+        let f2 = parseFloat(f1)
+        console.log(f2);
+
+        // 4번
+        let n2 = 3.14159;
+        console.log(typeof(n2));
+        let n3 = String(n2);
+        console.log(n3);
+
+        // 5번
+        let name = 'Alice';
+        console.log(name);
+
+        // 6번
+        let a = 7;
+        let b = 3;
+        console.log(a * b);
+
+        // 7번
+        let n4 = 'false';
+        let n5 = Boolean(n4);
+        console.log(n5);
+
+        // 8번
+        console.log(parseInt('15.9'));
+        console.log(Number('15.9'));
+
+        // 9번
+        console.log(parseFloat('99.99px'));
+
+        // 10번
+        console.log(Boolean(0));
+        console.log(Boolean('0'));
+
+        // 11번
+        let x = 5;
+        x += 3;
+        console.log(x);
+
+        // 12번
+        let x2 = 12;
+        let y = 8;
+        let xy = (x2 + y) / 2
+        console.log(xy);
+
+        // 13번
+        let num = 10;
+        let str = '10';
+        console.log(num == str);
+        console.log(num === str);
+
+        // 14번
+        let count = 1;
+        console.log(++count);
+        console.log(count++);
+
+        // 15번
+        console.log(null ?? '기본값');
+
+        // 16번
+        let number = 15;
+        console.log(number > 10 && number < 20);
+
+        // 17번
+        function greet(name) {
+           console.log(`${name}님 안녕하세요.`);
+        }
+        greet('Tom');
+
+        // 18번
+        function add(a, b) {
+            console.log(a + b);
+        }
+        add(10, 20);
+
+        // 19번
+        function welcome(name='Guest') {
+            console.log(`${name}님 안녕하세요.`);
+        }
+        welcome();
+
+        // 20번
+        let a2 = 10;
+        console.log(a2 *= 2);
+        console.log(a2 -= 5);
+        console.log(a2 /= 3);
+
+        // 21번
+        let num2 = 5;
+        console.log(++num2);
+        console.log(num2++);
+
+        // 22번
+        let hello = 'Hello';
+        let world = 'World';
+        console.log(hello + ' ' + world);
+
+        // 23번
+        let x3 = 1;
+        x3 += 2 * 3;
+        console.log(x3);
+
+        // 24번
+        function combine(str, num) {
+            return `${str}${num}`;
+        }
+        console.log(combine('Hello', 5));
+
+        // 25번
+        function getMessage() {
+            let message = '안녕하세요.';
+            return message;
+        }
+        console.log(getMessage());
+    </script>
+</body>
+</html>

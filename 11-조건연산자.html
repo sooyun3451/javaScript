@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>11-조건연산자</title>
+</head>
+<body>
+  <script>
+    // 짝수 홀수
+    let n1 = 15;
+    let result1 = (n1 % 2 === 0) ? '짝수' : '홀수';
+    console.log(result1);
+
+    // 성인 미성년자
+    let age = 19;
+    let isAdult = (age >= 20) ? '성인' : '미성년자';
+    console.log(isAdult);
+
+    // 로그인 여부
+    let isLogin = true;
+    let message = isLogin ? '환영합니다.' : '로그인이 필요합니다.';
+    console.log(message);
+
+    // 합격 불합격
+    let score = 70;
+    let checkPass = (score >= 60) ? '합격입니다.' : '불합격입니다.';
+    console.log(checkPass);
+
+    // 할인 비할인
+    let price = 12000;
+    isSale = false;
+    let priceMessage = isSale ? `할인적용: ${price}원 입니다.` : `정가: ${price}원 입니다.`;
+    console.log(priceMessage);
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-if문</title>
+</head>
+<body>
+    <script>
+        // 짝수홀수
+        let number = 45;
+        if(number % 2 == 0) {
+            console.log('짝수는 홍팀입니다.');
+        }else {
+            console.log('홀수는 청팀입니다.');
+        }
+
+        // 당첨
+        let ball = 'red';
+        if(ball == 'red') {
+            console.log('당첨입니다.');
+        }else {
+            console.log('다음기회에...');
+        }
+
+        // 문제1
+        let age = 20;
+        function checkAdult() {
+            if(age >= 20) {
+                console.log('성인입니다.');
+            } else {
+                console.log('미성년자 입니다.');
+            }
+        }
+        checkAdult();
+
+        // 문제2
+        let num = 11;
+        function checkEvenOdd() {
+            if(num % 2 == 0) {
+                console.log('짝수입니다.');
+            }else {
+                console.log('홀수입니다.');
+            }
+        }
+        checkEvenOdd();
+
+        // 문제3
+        let name = '홍길동';
+        let isSignIn = true;
+        function showLoginMessage() {
+            if(isSignIn) {
+                console.log(`${name}님 환영합니다.`);
+            }else {
+                console.log('로그인이 필요합니다.');
+            }
+        }
+        showLoginMessage();
+
+        //문제4
+        let point = 95;
+        let grade = 'A'
+        function checkGrade() {
+            if(point >= 90) {
+                grade = 'A';
+            }else if(point >= 80) {
+                grade = 'B';
+            }else if(point >= 70) {
+                grade = 'C';
+            }else {
+                grade = 'F';
+            }
+            console.log(grade);
+        }
+        checkGrade();
+
+        // 문제5
+        let temp = 16;
+        let outfit = '';
+        function suggestClothes() {
+            if(temp >= 25) {
+                outfit = '반팔';
+            }else if(temp >= 15) {
+                outfit = '가벼운 겉옷';
+            }else {
+                outfit = '두꺼운 옷';
+            }
+            console.log(`${outfit} 추천`);
+        }
+        suggestClothes();
+    </script>
+</body>
+</html>

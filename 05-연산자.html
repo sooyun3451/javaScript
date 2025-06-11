@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>05-연산자</title>
+</head>
+<body>
+  <script>
+    let a1 = 10;
+    let a2; 
+    let a3;
+    console.log(a1, a2, a3); // 10 undefined undefined
+    a2 = a3 = a1;
+    console.log(a1, a2, a3); // 10 10 10
+
+    console.log('==========');
+
+    console.log(10 % 3); // 10 나누기 3의 나머지 1
+    console.log(15 % 4); // 15 나누기 4의 나머지 3
+
+    console.log('==========');
+
+    let b = 10;
+    let c = 5;
+
+    b += c; 
+    // b = b + c =>  b + c 의 값을 b의 새로운 값으로 할당함.
+    console.log(b); // 15
+
+    b *= c;
+    // b = b * c
+    console.log(b); // 75
+
+    console.log('==========');
+
+    let d = 10;
+    d++;
+    console.log(d); // 11
+
+    let e = 10;
+    e--;
+    console.log(e); // 9
+
+    let f = 15;
+    console.log(f++); // 15
+    console.log(f); // 16
+
+    let g = 30;
+    console.log(++g); // 31
+    console.log(g); // 31
+
+    console.log('==========');
+
+    console.log('5' == 5); // true 
+    console.log('5' === 5); // false
+
+    console.log('==========');
+
+    console.log(!true); // false
+    console.log(!(5 < 10)); // false
+
+    console.log('==========');
+
+    console.log(true && true); // true
+    console.log(true && false); // false
+    console.log(false && true); // false
+    console.log(false && false); // false
+
+    console.log('==========');
+
+    console.log(true || true); // true
+    console.log(true || false); // true
+    console.log(false || true); // true
+    console.log(false || false); // false
+
+    console.log('==========');
+
+    let h1 = 10;
+    let h2 = 20;
+    let h3;
+
+    let h4 = h1 ?? h2;
+    console.log(h4); // 10
+
+    let h5 = h3 ?? h2;
+    console.log(h5); // 20
+
+    let name;
+    let nickname = 'sunny';
+    let user = name ?? nickname;
+    // => 사용자 이름을 우선으로 사용하되, 사용자 이름이 없는 경우에는 닉네임을 사용하도록 설정.
+  </script>
+</body>
+</html>

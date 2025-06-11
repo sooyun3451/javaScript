@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>04-형변환</title>
+</head>
+<body>
+  <script>
+    let num1 = '50';
+    let num2 = 10;
+    let num3 = Number(num1);
+
+    console.log(typeof(num1));
+    console.log(typeof(num2));
+
+    console.log('더하기', num1 + num2);
+    console.log('빼기', num1 - num2);
+    console.log('곱하기', num1 * num2);
+    console.log('나누기', num1 / num2);
+
+    console.log(num3);
+    console.log(typeof(num3));
+    console.log('더하기2', num2 + num3);
+
+    let a = '15.268m';
+    let b = parseInt(a);
+    let c = parseFloat(a);
+    let d = Number(a);
+    console.log(b); // 15
+    console.log(c); // 15.268
+    console.log(d); // NaN
+
+    let e = 215;
+    let f = String(e);
+    console.log(typeof(f));
+
+    let g;
+    console.log(g); // undefined'
+    console.log('g타입:', typeof(g)); // g타입: undefined
+    let h = String(g);
+    console.log(h); // undefined
+
+    let i = null;
+    console.log(i); // null
+    console.log('i타입:', typeof(i)); // i타입: object
+    let j = String(i);
+    console.log(j); // null
+
+    let k = true;
+    let l = String(k);
+    console.log(l); // true
+
+    console.log(Boolean(null)); // false
+    console.log(Boolean(undefined)); // false
+    console.log(Boolean(156)); // true
+    console.log(Boolean(0)); // false
+    console.log(Boolean('month')); // true
+    console.log(Boolean('')); // false
+  </script>
+</body>
+</html>

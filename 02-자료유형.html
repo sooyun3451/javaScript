@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>02-자료유형</title>
+</head>
+<body>
+  <script>
+    console.log(typeof('가나다')); // string
+    console.log(typeof(5)); // number
+
+    console.log('오늘은 수요일입니다.');
+    console.log('내일은 ' + '목요일입니다.');
+    console.log('오늘 날씨 \'맑음\'!');
+
+    console.log(254*21);
+
+    // 5는 숫자형, '5'는 문자열 자료로 인식됨
+    console.log(typeof(5)); // number
+    console.log(typeof('5')); // string
+
+    // 자바스크립트는 느슨한 문법을 가지고 있어 '24'(문자열과) 5(숫자)를 곱하기 명령을 내리면 '24'를 숫자로 인식해서 계산을 실행해줌
+    console.log('24' * 5);
+    // 단. 더하기는 문자열의 결합으로 인식하기 때문에 245(문자열)라고 결과가 출력됨
+    console.log('24' + 5);
+
+    // '물'은 문자열이기 때문에 12로 나눌수 없음. 계산이 성립되지 않음
+    // 그래서 NaN(Not a Number)라는 메세지가 출력됨
+    console.log('물'/12);
+
+    console.log(15<58); // true
+
+    console.log('연습--------');
+    console.log('무지개');
+    document.write('햇빛 <br>');
+
+    console.log(5+5);
+    console.log(4+6);
+    console.log(3+7);
+    console.log(2+8);
+    console.log(1+9);
+
+    document.write(11+9, '<br>');
+    document.write(12+8, '<br>');
+    document.write(13+7, '<br>');
+    document.write(14+6, '<br>');
+    document.write(15+5);
+
+    console.log(12>2);
+    console.log(345>67);
+    console.log(44<110);
+    console.log(34<123);
+    console.log(12>11);
+
+    console.log(23>45);
+    console.log(567<34);
+    console.log(89<11);
+    console.log(56<9);
+    console.log(234<19);
+  </script>
+</body>
+</html>
