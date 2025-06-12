@@ -51,8 +51,91 @@
     console.log(items); // ['bag', 'eraser']
 
     let letters = ['A', 'B', 'C'];
-    letters.splice(0, 2, 'Z');
+    letters.splice(0, 2, 'Z'); // 0번부터 총 2개를 잘라내고, 그 자리에 'Z' 추가
     console.log(letters); // ['Z', 'C']
+
+    // 연습1
+    let shoppingList = ['apple', 'bread'];
+    shoppingList.unshift('milk');
+    shoppingList.push('chocolate');
+    console.log(shoppingList.includes('milk')); // true
+    console.log(shoppingList.join()); // milk,apple,bread,chocolate
+
+    // 연습2
+    let queue = ['Mina', 'Jin', 'Hoon'];
+    queue.push('Soo');
+    let q = queue.shift();
+    console.log(`${q}님, 입장해주세요`); // Mina님, 입장해주세요
+    console.log('Jin의 위치:', queue.indexOf('Jin')); // Jin의 위치: 0
+    console.log(queue); // ['Jin', 'Hoon', 'Soo']
+
+    // 연습3
+    let char = ['J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't'];
+    console.log(char.join('')); // JavaScript
+    char.pop();
+    char.push('!');
+    console.log(char.join('')); // JavaScrip!
+
+    // 연습4
+    let colors2 = ['red', 'green', 'blue', 'yellow', 'purple'];
+    let color2 = colors2.slice(1, 4);
+    color2.reverse();
+    console.log(color2); // ['yellow', 'blue', 'green']
+
+    // 연습5
+    let subject = ['Korean', 'Math', 'History', 'Science'];
+    subject.splice(1, 2, 'English', 'Art');
+    console.log(subject); // ['Korean', 'English', 'Art', 'Science']
+    subject.pop();
+    subject.unshift('PE');
+    console.log(subject); // ['PE', 'Korean', 'English', 'Art']
+
+    let colors3 = ['red', 'green', 'blue'];
+    for(color of colors3) {
+      console.log(color);
+    }
+
+    let words = ['apple', 'banana', 'kiwi'];
+    for(let word of words) {
+      console.log(word.length);
+    }
+
+    let numbers2 = [10, 45, 25, 48, 52];
+    for(let number of numbers2) {
+      if(number % 2 === 1) {
+        console.log(number);
+      }
+    }
+
+    let scores = [80, 80, 90, 60, 70];
+    let sum = 0;
+    for(score of scores) {
+      sum += score;
+    }
+    let avg = sum / scores.length;
+    console.log('평균:', avg);
+
+    scores.forEach(function (score, i) {
+      console.log(`${i + 1}번 학생의 점수: ${score}점`);
+    })
+
+    let students = ['김민지', '이수진', '김호준', '박지민'];
+    // '김'씨 성을 가진 이름만 출력
+    // 문자값변수.startsWith('d') => 'd'로 시작하면 true값을, 아니면 false
+    students.forEach(function(student) {
+      if(student.startsWith('김')) {
+        console.log(student);
+      }
+    });
+
+    let values = [10, -5, 0, 8, -25, -8, 87];
+    let positive = 0; // 양수
+    let negative = 0; // 음수
+    values.forEach(function(value) {
+      if(value > 0)  positive++;
+      else if (value < 0) negative++;
+    });
+    console.log(`양수: ${positive}개 / 음수: ${negative}개`);
   </script>
 </body>
 </html>

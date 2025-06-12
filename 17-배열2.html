@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>17-배열2</title>
+</head>
+<body>
+  <script>
+    let nums1 = [10, 20, 30, 40];
+    let nums2 = nums1.map(function(n) {
+      return n * 2;
+    });
+    console.log(nums2);
+
+    let nums3 = nums1.map(n => n * 2);
+    console.log(nums3);
+
+    let names = ['jin', 'mina', 'hoon'];
+    // toUpperCase() => 대문자로 변환
+    // toLowerCase() => 소문자로 변환
+    let upperNames = names.map(name => name.toUpperCase());
+    console.log(upperNames);
+
+    let polite = names.map(name => name + '님');
+    console.log(polite);
+
+    let scores = [50, 80, 95];
+    let result = scores.map(score => {
+      if(score >= 60) {
+        return '함격';
+      } else {
+        return '불합격';
+      }
+    });
+    console.log(result);
+
+    let result2 = scores.map(score => score >= 60 ? '함격' : '불합격');
+    console.log(result2);
+
+    let dates = ['2025-06-12', '2025-07-08'];
+    let years = dates.map(date => date.slice(0, 4));
+    console.log(years);
+
+    let ages = [15, 22, 18, 32];
+    let adults = ages.filter(age => age >= 20);
+    console.log(adults);
+
+    let evens = ages.filter(age => age % 2 === 0);
+    console.log(evens);
+
+    let nums4 = [2, 5, 19, 7, 1];
+    let total4 = nums4.reduce((a, b) => a + b, 0);
+    console.log(total4);
+
+    let max4 = nums4.reduce((a, b) => a > b ? a : b);
+    console.log(max4);
+
+    // let names = ['jin', 'mina', 'hoon'];
+    names.sort();
+    console.log(names);
+
+    nums4.sort();
+    console.log(nums4);
+
+    // 오름차순
+    nums4.sort((a, b) => a - b);
+    console.log(nums4);
+
+    // 내림차순
+    nums4.sort((a, b) => b - a);
+    console.log(nums4);
+</script>
+</body>
+</html>
