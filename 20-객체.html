@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>20-객체</title>
+</head>
+<body>
+  <script>
+    let member = {
+      name: '홍길동',
+      age: 25,
+      date: '2019-02-28'
+    }
+    console.log(member); // {name: '홍길동', age: 25, date: '2019-02-28'}
+    document.write(member, '<br>'); // [object Object]
+    document.write(member.name, '<br>'); // 홍길동
+    document.write(member.age, '<br>') // 25
+
+    let book = {
+      title: '지바스크립트', 
+      pages: 247,
+      author: '이민희' 
+    }
+
+    // car변수 생성해서 부품의 브랜드 정보를 저장
+    // wheels, glass, engine, tires
+    let car = {
+      wheels: '엑티온',
+      glass: '3M',
+      engine: '현대',
+      tires: '넥센'
+    }
+
+    let scores = [
+      {
+        korean: 57,
+        English: 62
+      },
+      {
+        korean: 84,
+        English: 96
+      },
+      {
+        korean: 77,
+        English: 75
+      }
+    ];
+    document.write('국어: ', scores[0].korean, '<br>'); // 국어: 57
+
+    let book2 = {}; // 빈 객체 생성
+    book2.pages = 547;
+    console.log(book2); // {pages: 547}
+
+    let settings = {
+      volume: 14,
+      brightness: 80
+    }
+
+    let key = 'volume';
+    console.log(settings.volume); // 14
+    console.log(settings['volume']); // 14
+    console.log(settings[key]); // 14
+
+    let team = {
+      name: 'red',
+      member: ['지나', '민희', '상우', '지연'],
+      // slogans 프로퍼티의 값은 함수 => 객체의 프로퍼티 값이 함수라면 해당 프로퍼티를 메서드라고 부름.
+      slogans: function() {
+        console.log('레드, 레드, 화이팅!');
+      }
+    }
+    document.write(team.member, '<br>'); // 지나,민희,상우,지연
+    document.write(team.member[0]); // 지나
+    team.slogans(); // 레드, 레드, 화이팅!
+  </script>
+</body>
+</html>

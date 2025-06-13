@@ -85,6 +85,91 @@
     });
     console.log(evens);
     console.log(odds);
+
+    console.log('===============');
+
+    // 상품 가격 배열에서 가격대별로 '저가', '중가', '고가'로 분류
+    // 만원이하 - 저가, 3만원 이하 - 중가, 그외 - 고가
+    let prices = [13000, 7000, 45000];
+    let high = [];
+    let middle = [];
+    let low = [];
+    prices.forEach(price => {
+      let msg = '';
+      if(price <= 10000) {
+        msg = '저가';
+        low.push(price);
+      } else if(price <= 30000) {
+        msg = '중가';
+        middle.push(price);
+      } else {
+        msg = '고가';
+        high.push(price);
+      }
+      console.log(`${price}: ${msg}`);
+    });
+    console.log(low);
+    console.log(middle);
+    console.log(high);
+
+    console.log('===============');
+
+    // 요일을 저장하는 배열 만들기
+    // switch으로 메세지 처리하기
+    // 월: 새로운 한 주의 시작입니다!
+    // 토: 즐거운 주말의 시작입니다!
+    // 일: 주말은 언제나 즐겁습니다!
+    // 그외: 0요일은 평일입니다.
+    let days = ['월', '화', '수', '목', '금', '토', '일'];
+    for(let day of days) {
+      switch(day) {
+        case '월': 
+          console.log('즐거운 한 주의 시작입니다!');
+          break;
+        case '토':
+          console.log('즐거운 주말의 시작입니다!');
+          break;
+        case '일':
+          console.log('주말은 언제나 즐겁습니다!');
+          break;
+        default: 
+          console.log(`${day}요일은 평일입니다.`);
+      }
+    }
+
+    console.log('===============');
+
+    days.forEach(day => {
+      switch(day) {
+        case '월': 
+          console.log('즐거운 한 주의 시작입니다!');
+          break;
+        case '토':
+          console.log('즐거운 주말의 시작입니다!');
+          break;
+        case '일':
+          console.log('주말은 언제나 즐겁습니다!');
+          break;
+        default: 
+          console.log(`${day}요일은 평일입니다.`);
+      }
+    })
+
+    console.log('===============');
+
+    let expenses = [20000, 5000, 36000, 89000];
+    for(let expense of expenses) {
+      switch(true) {
+        case (expense < 20000): 
+          console.log('절약');
+          break;
+        case (expense < 50000):
+          console.log('보통');
+          break;
+        default:
+          console.log('과소비');
+      }
+    }
   </script>
 </body>
 </html>
