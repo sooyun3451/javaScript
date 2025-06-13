@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>19-연습</title>
+</head>
+<body>
+  <script>
+    // 점수 배열을 받아 60점 이상은 '함격' 그 외는 '불합격'으로 출력(for + if)
+    let scores = [75, 42, 80, 94, 52];
+
+    for(let i = 0; i < scores.length; i++) {
+      let msg = '';
+      if(scores[i] >= 60) {
+        msg = `${i + 1}번은 합격입니다.`
+      } else {
+        msg = `${i + 1}번은 불합격입니다.`
+      }
+      console.log(msg);
+    }
+
+    console.log('===============');
+
+    for(let score of scores) {
+      let i = scores.indexOf(score);
+      let msg = '';
+      if(score >= 60) {
+        msg = `${i + 1}번은 합격입니다.`
+      } else {
+        msg = `${i + 1}번은 불합격입니다.`
+      }
+      console.log(msg);
+    }
+
+    console.log('===============');
+
+    scores.forEach(function(score, idx) {
+      let msg = '';
+      if(score >= 60) {
+        msg = `${idx + 1}번은 합격입니다.`
+      } else {
+        msg = `${idx + 1}번은 불합격입니다.`
+      }
+      console.log(msg);
+    });
+
+    console.log('===============');
+
+    // 2. 숫자 배열에서 짝수는 배열 A, 홀수는 배열 B에 따로 저장
+    let nums = [1, 2, 3, 4, 5, 6, 7];
+    let evens = [];
+    let odds = [];
+    // 배열.push(값) => 배열의 마지막에 요소 추가
+    for(let i = 0; i < nums.length; i++) {
+      if(nums[i] % 2 === 0) {
+        evens.push(nums[i]);
+      } else {
+        odds.push(nums[i]);
+      }
+    }
+    console.log(evens);
+    console.log(odds);
+
+    console.log('===============');
+
+    for(let num of nums) {
+      let i = nums.indexOf(num);
+      if(nums[i] % 2 === 0) {
+        evens.push(num);
+      } else {
+        odds.push(num);
+      }
+    }
+    console.log(evens);
+    console.log(odds);
+
+    console.log('===============');
+
+    nums.forEach(num => {
+      if(num % 2 === 0) {
+        evens.push(num);
+      } else {
+        odds.push(num);
+      }
+    });
+    console.log(evens);
+    console.log(odds);
+  </script>
+</body>
+</html>
