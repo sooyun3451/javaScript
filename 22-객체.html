@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>22-객체</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      sayHello() {
+        console.log(`이름: ${this.name}, 나이: ${this.age}세`);
+      }
+    }
+
+    const user1 = new Person('이지수', 23);
+    user1.sayHello(); // 이름: 이지수, 나이: 23세
+
+    class Book {
+      constructor(title, author) {
+        this.title = title;
+        this.author = author;
+      }
+      info() {
+      console.log(`책제목: ${this.title}, 작가: ${this.author}`);
+      }
+    }
+    const book1 = new Book('청춘의 독서', '유시민');
+    book1.info();
+
+    class Student {
+      constructor(name, scores) {
+        this.name = name;
+        this.scores = scores;
+      }
+      getAverage() {
+        let sum = 0;
+        for(let score of this.scores) {
+          sum += score;
+        }
+        return sum / this.scores.length;
+      }
+    }
+
+    const student1 = new Student('최지우', [82, 88, 90]);
+    const student2 = new Student('김우성', [98, 65, 90, 88]);
+    console.log(student1.getAverage());
+    console.log(student2.getAverage());
+
+    class Counter {
+      constructor() {
+        this.value = 0;
+      }
+
+      increase() {
+        this.value++
+      }
+
+      decrease() {
+        this.value--;
+      }
+
+      show() {
+        console.log(`현재 값: ${this.value}`);
+      }
+    }
+
+    let counter = new Counter();
+    counter.increase();
+    counter.increase();
+    counter.decrease();
+    counter.show();
+
+    class Rectangle {
+      constructor(width, height) {
+        this.width = width;
+        this.height = height;
+      }
+      getArea() {
+        return this.width * this.height;
+      }
+    }
+    const rectangle = new Rectangle(10, 10);
+    console.log(rectangle.getArea());
+
+    class User {
+      constructor(id, password) {
+        this.id = id;
+        this.password = password;
+      }
+      login(inputId, inputPassword) {
+        return (this.id === inputId && this.password === inputPassword) ? '로그인 되었습니다' : '로그인 해주세요'
+      }
+    }
+    const newUser = new User('gildong', 1234);
+    console.log(newUser.login('gildong', 1234));
+
+    // 얕은 복사
+    let aa = [1, 2, 3];
+    let copyA1 = aa.slice();
+    let copyA2 = [...aa];
+    let copyA3 = Array.from(aa);
+    // copyA1, copyA2, copyA3 => 모두 같은 동작을 가리킴.
+    // aa배열을 복사해서 새로운 배열이 만들어지게 처리됨.
+    // slice()메서드에 인수를 생략함 => 해당 배열을 그대로 복사한다는 의미
+    // [...aa] => 전개 구문(스프레드 문법). 해당 배열을 그대로 복사한다는 의미
+    // Array.from() => Array(배열) 객체를 사용해 새로운 배열 생성. aa배열 그대로 복사해서 새로운 배열로 처리한다는 의미
+
+    copyA1[0] = 9;
+    console.log(aa); // [1, 2, 3];
+    console.log(copyA1); // [9, 2, 3];
+
+    let bb = [
+      {b1: 1},
+      {b2: 2}
+    ];
+    let copyB1 = [...bb];
+    copyB1[0].b1 = 9;
+    console.log(bb); // [{b1: 9}, {b2: 2}];
+    console.log(copyB1); // [{b1: 9}, {b2: 2}];
+
+    // 깊은 복사 
+    // JSON: 문자열 데이터. => {"name": "이수진", "age": 25}
+    // JSON.parse() => 문자열 데이터를 자바스트립트가 활용할 수 있는 배열 또는 객체로 변환하는 메서드
+    // JSON.stringify() => 배열 또는 객체를 문자열 데이터로 변환하는 메서드
+
+    let cc = [{a: 1}, {b: 2}];
+    let copyC1 = JSON.parse(JSON.stringify(cc));
+    copyC1[0].a = 9;
+    console.log(cc); // [{a: 1}, {b: 2}];
+    console.log(copyC1); // [{a: 9}, {b: 2}];
+  </script>
+</body>
+</html>

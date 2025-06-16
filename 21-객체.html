@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>21-객체</title>
+</head>
+<body>
+  <script>
+    let user = {
+      name: '홍길동',
+      greet: function() {
+        console.log(this.name + '님, 안녕하세요!'); // 홍길동님, 안녕하세요!
+      }
+    };
+    user.greet();
+
+    function sayHi() {
+      console.log(this);
+      console.log(this.scrollX);
+    };
+    sayHi();
+
+    let person = {
+      name: '미나',
+      hi: () => {
+        console.log(this.name);
+      }
+    };
+    person.hi();
+
+    // 생성자 함수 = 붕어빵 틀
+    function Person(name, age) {
+      // Person생성자 함수를 사용해 만들어질 객체의 프로퍼티와 메서드 정의하기.
+      this.name = name; // 객체의 name 프로퍼티의 값으로 매개변수 name을 사용함.
+      this.age = age;
+      this.sayHello = function() {
+        console.log(`안녕하세요, 저는 ${this.name}입니다.`);
+      };
+    };
+    let user1 = new Person('홍길서', 23);
+    // user1은 Person 생성자 함수에 의해 만들어지는 객체.
+    // 이러한 객체를 '인스턴스 객체'라고 함.
+    user1.sayHello(); // 안녕하세요, 저는 홍길서입니다.
+    let user2 = new Person('홍길남', 33);
+    let user3 = new Person('홍길북', 34);
+
+    function Student(name, grade) {
+      this.name = name;
+      this.grade = grade;
+    }
+
+    let st1 = new Student('김슬기', 2);
+    let st2 = new Student('이우현', 3);
+    let st3 = new Student('김지희', 3);
+
+    function Book(title, pages) {
+      this.title = title;
+      this.pages = pages;
+    }
+    let book1 = new Book('청춘의 독서', 430);
+    let book2 = new Book('단 한번의 삶', 550);
+
+    function Car(brand, year) {
+      this.brand = brand;
+      this.year = year;
+      this.startUp = function() {
+        console.log(`${brand}: 시동걸림`);
+      }
+    };
+    let c1 = new Car('기아', 2022);
+    let c2 = new Car('현대', 2025);
+    c1.startUp();
+    c2.startUp();
+
+    function UserInfo(id, pw) {
+      this.id = id;
+      this.pw = pw;
+    }
+    let userInfo1 = new UserInfo('gildong', 1234);
+    let userInfo2 = new UserInfo('gilseo', 5678);
+
+  </script>
+</body>
+</html>
