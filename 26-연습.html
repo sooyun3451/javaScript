@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>26-연습</title>
+</head>
+<body>
+  <div id="d1"></div>
+  <div id="d2"></div>
+  <script>
+    let d1 = document.getElementById('d1');
+    let answer1 = parseInt(prompt('숫자를 입력해주세요.'));
+    console.log(answer1);
+    console.log(typeof(answer1)); // string
+
+    // prompt()로 수집된 값은 문자열로 처리됨.
+    // prompt()에 값을 입력하지 않고 확인 => 빈 문자열 저장
+    // prompt() 취소 => null 저장
+
+    // answer1의 값이 유효할 때만 처리 => answer1의 값이 truthy할 때만 처리
+    if(answer1) {
+      // 짝수 판별기
+      if(answer1 % 2 === 0) {
+        d1.innerHTML = `입력하신 숫자 ${answer1}은 짝수입니다.`;
+      } else {
+        d1.innerHTML = `입력하신 숫자 ${answer1}은 홀수입니다.`;
+      }
+    }else {
+      d1.innerHTML = '입력하신 숫자는 유효하지 않습니다.';
+    }
+
+    let answer2 = parseInt(prompt('수강 과목의 번호를 입력해주세요. 1: 수학, 2: 영어, 3: 과학'));
+    let d2 = document.getElementById('d2');
+      switch(answer2) {
+        case 1: 
+          d2.innerHTML = '<strong>수학: 307호</strong>';
+          break;
+        case 2: 
+          d2.innerHTML = '<strong>영어: 204호</strong>';
+          break;
+        case 3:
+          d2.innerHTML = '<strong>과학 105호</strong>';
+          break;
+        default:
+          d2.innerHTML = '수강번호를 확인해주세요.'
+      }
+
+  </script>
+</body>
+</html>

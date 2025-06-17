@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>25-window객체</title>
+</head>
+<body>
+  <div style="height: 2000px;">1111</div>
+  <div style="height: 150px; overflow: scroll;" id="d2">
+    <p style="height: 2000px;">2222</p>
+  </div>
+  <script>
+    // window.document.getElementById();
+    // document.getElementById();
+
+    console.log('창 너비:', window.innerWidth);
+    console.log('창 높이:', window.innerHeight);
+
+    // window.alert('경고!');
+    // alert('경고!');
+    // confirm('동의하십니까?');
+    // prompt('이름을 입력해주세요.');
+
+    // 특정 시간이 지난 뒤 동작을 처리하기
+    // setTimeout(콜백함수, 시간)
+    // 1초 = 1000
+    // window.setTimeout();
+    // setTimeout(function() {
+    //   document.body.style.backgroundColor = 'lavender'
+    // }, 2000);
+
+    // 특정 시간의 간격마다 동작 반봅 처리하기
+    // window.setInterval(콜백함수, 시간);
+    // 반복되는 동작을 멈춤 => window.clearInterval(변수)
+    // 이때 변수는 setInterval메서드가 저장된 변수를 가리킴
+    let count = 0;
+    let timer = setInterval(() => {
+      count++;
+      console.log(count);
+      if(count === 5) {
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    console.log(window.location.href);
+    // 브라우저의 위치가 변경
+    // window.location.href = 'http://google.com';
+
+    // 팝업창 띄우기
+    // window.open('http://naver.com', '_blank');
+
+    // window.scrollTo(0, 2000);
+    console.log('스크롤 위치값:', window.scrollY);
+    // 브라우저 세로 스크롤의 위치값을 저장
+    // 브라우저 세로 스크롤의 위치값 = 문서가 위쪽 방향으로 이동한 거리값
+
+    const d2 = document.getElementById('d2');
+    // scrollTop => 특정 태그의 세로 스크롤 위치값을 저장하는 명령
+    console.log(d2.scrollTop);
+    // window객체의 프로퍼티는 아니라서 undefined가 출력 
+    console.log(window.scrollTop);
+  </script>
+</body>
+</html>
