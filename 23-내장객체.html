@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>23-내장객체</title>
+</head>
+<body>
+  <script>
+    let weather = 'Today is Good!';
+    console.log(weather.length); // 14
+    console.log(weather.toUpperCase()); // TODAY IS GOOD!
+    console.log(weather.toLowerCase()); // today is good!
+    console.log(weather.includes('day')); // true
+    console.log(weather.slice(0, 5)); // Today
+    console.log(weather.replace('Good', 'Sunny')); // Today is Sunny!
+    console.log(weather.split(' ')); // ['Today', 'is', 'Good!']
+
+    let user = {
+      name: '홍길동',
+      age: 23
+    }
+    console.log(Object.keys(user)); // ['name', 'age']
+    console.log(Object.values(user)); // ['홍길동', 23]
+    console.log(Object.entries(user)); // [Array(2), Array(2)]
+
+    // 랜덤 수(난수): 0.00001 ~ 0.99999
+    let a1 = Math.random();
+    console.log(a1); // 0.6959436668173403
+
+    // 0~9사이의 난수를 생성함
+    // 1 ~ 10 사이의 난수를 생성함
+    // let a2 = Math.floor(Math.random() * 10);
+    let a2 = Math.floor(Math.random() * 10) + 1;
+    console.log(a2);
+
+    // 버림
+    console.log(Math.floor(45.256)); // 45
+    console.log(Math.floor(45.856)); // 45
+
+    // 올림
+    console.log(Math.ceil(45.286)); // 46
+    console.log(Math.ceil(45.886)); // 46
+
+    // 반올림
+    console.log(Math.round(45.256)); // 45
+    console.log(Math.round(45.856)); // 46
+
+    // 최대, 최소
+    console.log(Math.max(15, 20, 75)); // 75
+    console.log(Math.min(15, 20, 75)); // 15
+
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    console.log('==========');
+    console.log(getRandomNumber(1, 15)); // 14
+    console.log(getRandomNumber(5, 15)); // 15
+
+    // 날짜 
+    let d1 = new Date();
+    console.log(d1); // Tue Jun 17 2025 15:02:09 GMT+0900 (한국 표준시)
+
+    let d2 = new Date('2023-02-05');
+    console.log(d2); // Sun Feb 05 2023 09:00:00 GMT+0900 (한국 표준시)
+
+    console.log(d2.toLocaleDateString()); // 2023. 2. 5.
+
+    let d1Year = d1.getFullYear();
+    let d1Month = d1.getMonth() + 1; // 1월 = 0으로 저장
+    let d1Days = d1.getDate();
+    console.log(`${d1Year}년 ${d1Month}월 ${d1Days}일`); // 2025년 6월 17일
+
+    let days = ['일', '월', '화', '수', '목', '금', '토'];
+    let d1Day = days[d1.getDay()];
+    console.log(`${d1Day}요일`); // 화요일
+
+    let d3 = new Date('2024-12-02');
+    let d4 = new Date('2025-06-01');
+    let d5 = d4 - d3;
+    console.log(d5); // 15638400000 
+    let d6 = d5 / (1000 * 60 * 60 * 24);
+    console.log(d6); // 181
+    /*
+      두 날짜 사이의 기간을 구할 때,
+      과거의 특정 시점으로부터 해당 날짜까지의 시간의 양을 밀리초 단위로 계산함
+      (1초 = 1000밀리초)
+      그래서 d4 - d3의 결과가 아주 큰 단위의 숫자로 출력됨.
+      d6에서 그 결과를 일자로 변환하도록 계산함.
+    */ 
+    
+    // 달의 첫째날과 마지막날
+    let year = 2025;
+    let month = 4; // 5월 
+
+    let firstDay = new Date(year, month, 1);
+    let lastDay = new Date(year, month + 1, 0); // 다음달 1일의 전날
+    let lastDay2 = new Date(year, month + 1, -1); // 다음달 1일의 전전날
+    console.log(firstDay.toLocaleDateString()); // 2025. 5. 1.
+    console.log(lastDay.toLocaleDateString()); // 2025. 5. 31.
+    console.log(lastDay2.toLocaleDateString()); // 2025. 5. 30.
+
+    // 월별 필터링
+    let sampleDates = ['2025-05-15', '2025-05-18', '2025-05-15', '2025-06-15', '2025-06-08'];
+
+    let filteredDate = sampleDates.filter(sampleDate => {
+      let date = new Date(sampleDate);
+      return date >= firstDay && date <= lastDay;
+    });
+    console.log(filteredDate); // ['2025-05-15', '2025-05-18', '2025-05-15']
+  </script>
+</body>
+</html>
