@@ -1,0 +1,44 @@
+@charset "utf-8";
+#box7 {
+  color: red;
+}
+
+#box9.on {
+  color: lavender;
+}
+
+.box11 ul li.active button {
+  background-color: blueviolet;
+}
+
+.box12 {
+  height: 200px;
+  border: 2px solid black;
+}
+
+#box13 {
+  height: 50px;
+}
+
+#tooltip13 {
+  display: none;
+}
+
+.box14 {
+  width: 100px;
+  height: 100px;
+  background-color: lavender;
+  transition: 0.5s; 
+  /*
+    스타일 변경을 통해 애니메이션 처리
+    값을 숫자와 색상으로 처리할 수 있는 속성에 대해 적용됨.
+   */
+}
+
+body {
+  margin-bottom: 50px;
+}
+
+#box15 ul li.on {
+  background-color: aliceblue;
+}

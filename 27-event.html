@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>27-event</title>
+  <link rel="stylesheet" href="css/style27.css">
+</head>
+
+<body>
+  <div>
+    <button id="btn1">CLICK1</button>
+  </div>
+  <div>
+    <button id="btn2">CLICK2-show</button>
+    <button id="btn3">CLICK3-hide</button>
+    <div id="msg2"></div>
+  </div>
+  <script>
+    let btn1 = document.getElementById('btn1');
+    btn1.addEventListener('click', function () {
+      alert('버튼1 클릭!');
+    });
+
+    let btn2 = document.getElementById('btn2');
+    let msg2 = document.getElementById('msg2');
+    let btn3 = document.getElementById('btn3');
+    btn2.addEventListener('click', function () {
+      msg2.innerHTML = 'btn2 클릭 성공!';
+    });
+    btn3.addEventListener('click', () => {
+      msg2.innerHTML = '';
+    });
+  </script>
+  <hr />
+
+  <div class="btn4">
+    <button>button4-1</button>
+    <button>button4-2</button>
+    <button>button4-3</button>
+    <button>button4-4</button>
+  </div>
+  <div class="msg4"></div>
+  <script>
+    let btn4 = document.querySelectorAll('.btn4 button');
+    let msg4 = document.querySelector('.msg4');
+
+    btn4.forEach(function (btn, i) {
+      btn.addEventListener('click', () => {
+        msg4.innerHTML = `${i + 1}번 버튼 클릭!`;
+      })
+    });
+  </script>
+  <hr />
+
+  <div>
+    <button id="btn5">CLICK5 +</button>
+    <button id="btn6">CLICK6 -</button>
+    <div id="msg5">0</div>
+  </div>
+  <script>
+    // 1 ~ 3) 버튼 5번, 버튼 6번, 메세지5의 DOM설정
+    let btn5 = document.getElementById('btn5');
+    let btn6 = document.getElementById('btn6');
+    let msg5 = document.getElementById('msg5');
+    // 4) 메세지5에 출력할 숫자값을 지정하는 변수 설정
+    let count5 = 0;
+    // 5) 버튼5 클릭
+    btn5.addEventListener('click', () => {
+      count5++;
+      msg5.innerHTML = count5;
+    })
+    // => 4번 변수 1씩 증가
+    // => 메세지 5에 4번 변수값을 출력
+    // 6) 버튼6 클릭 
+    btn6.addEventListener('click', () => {
+      count5--;
+      msg5.innerHTML = count5;
+    })
+    // => 4번 변수 1씩 감소
+    // => 메세지 5에 4번 변수값을 출력
+  </script>
+  <hr />
+
+  <div>
+    <button id="btn7">CLICK7 - hide</button>
+    <button id="btn8">CLICK8 - show</button>
+    <div id="box7">BOX7</div>
+  </div>
+  <script>
+    let btn7 = document.getElementById('btn7');
+    let btn8 = document.getElementById('btn8');
+    let box7 = document.getElementById('box7');
+
+    btn7.addEventListener('click', () => {
+      box7.style.display = 'none';
+    });
+
+    btn8.addEventListener('click', () => {
+      box7.style.display = 'block';
+      box7.style.color = 'blue';
+    });
+  </script>
+  <hr />
+
+  <div>
+    <button id="btn9">CLICK9</button>
+    <button id="btn10">CLICK10</button>
+    <div id="box9">BOX9</div>
+  </div>
+  <script>
+    let btn9 = document.getElementById('btn9');
+    let btn10 = document.getElementById('btn10');
+    let box9 = document.getElementById('box9');
+
+    btn9.addEventListener('click', function () {
+      box9.classList.add('on');
+    });
+
+    btn10.addEventListener('click', () => {
+      box9.classList.remove('on');
+    });
+  </script>
+  <hr />
+
+  <div class="box11">
+    <ul>
+      <li><button>1</button></li>
+      <li><button>2</button></li>
+      <li><button>3</button></li>
+      <li><button>4</button></li>
+      <li><button>5</button></li>
+    </ul>
+  </div>
+  <script>
+    let btn11 = document.querySelectorAll('.box11 ul li');
+
+    btn11.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn11.forEach(bt => {
+          bt.classList.remove('active');
+        })
+        btn.classList.add('active');
+      });
+    });
+  </script>
+  <hr />
+
+  <h3>hover동작</h3>
+  mouseover 이벤트: 지정 영역에 마우스가 올라갈때 <br>
+  mouseout 이벤트: 지정 영역에 마우스가 내려왔을때
+
+  <div class="box12"></div>
+  <script>
+    let box12 = document.querySelector('.box12');
+
+    box12.addEventListener('mouseover', () => {
+      box12.style.backgroundColor = 'skyblue';
+    });
+
+    box12.addEventListener('mouseout', () => {
+      box12.style.backgroundColor = 'white';
+    });
+  </script>
+  <hr />
+
+  <div id="box13">
+    <p>! 주의사항</p>
+    <p id="tooltip13">주의사항은 다음과 같습니다.</p>
+  </div>
+  <script>
+    let box13 = document.getElementById('box13');
+    let tooltip = document.getElementById('tooltip13');
+
+    box13.addEventListener('mouseover', () => {
+      tooltip.style.display = 'block';
+    });
+
+    box13.addEventListener('mouseout', () => {
+      tooltip.style.display = 'none';
+    })
+  </script>
+  <hr />
+
+  <div class="box14">BOX14</div>
+  <script>
+    let box14 = document.querySelector('.box14');
+    box14.addEventListener('mouseover', function() {
+    // box14.style.width = '500px';
+    this.style.width = '500px';
+    // 함수 내부에 사용된 this는 해당 함수를 호출한 대상을 가리킴
+    // 여기서는 'mouseover'에 의해 호출된 함수 내부에서 this가 사용되었기 떄문에, 각각의 이벤트를 호출한 대상인 box14를 가리킴.
+    // 단, 화살표 함수에서 this를 사용하면 상위영역을 가리키기때문에 동작이 원하는대로 처리되지 않음.
+    });
+
+    box14.addEventListener('mouseout', (e) => {
+      e.target.style.width = '100px';
+    });
+    // - 이벤트가 발생되면 이벤트에 대한 부가정보가 자동적으로 생성됨
+    // => 이벤트 객체(객체란? 복합적인 자료 유형)
+    // - 이벤트 객체를 활용하려면 이벤트 핸들러 함수의 매개변수로 지정해줌.
+    //   보통 매개변수의 이름을 event 또는 e로 표기 
+    // - target프로퍼티는 이벤트가 발생한 타겟 요소가 저장되어 있음.
+    // - 그래서 e.target 또는 event.target으로 작성해주면 this를 사용하지 않아도 이벤트가 발생한 태그에 접근이 가능해짐.
+  </script>
+  <hr />
+
+  <div id="box15">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+  </div>
+  <script>
+    // let box15Lis = document.querySelectorAll('#box15 ul li');
+    // box15Lis.forEach(li => {
+    //   li.addEventListener('mouseover', () => {
+    //     li.classList.add('on');
+    //   });
+    //   li.addEventListener('mouseout', () => {
+    //       li.classList.remove('on');
+    //   });
+    // });
+
+    let box15 = document.getElementById('box15');
+    let box15Lis = box15.getElementsByTagName('li');
+
+    for(let li of box15Lis) {
+      li.addEventListener('mouseover', () => {
+        li.classList.add('on');
+      });
+      li.addEventListener('mouseout', () => {
+          li.classList.remove('on');
+      });
+    }
+  </script>
+  <hr />
+
+  <h3>키보드</h3>
+  <div id="box16">BOX16</div>
+
+  <script>
+    let ml = 0;
+    document.addEventListener('keydown', (e) => {
+      let box16 = document.getElementById('box16');
+
+      console.log('누른키: ', e.key);
+
+      if(e.key === 'Enter') {
+        console.log('엔터 입력됨');
+      }
+
+      if(e.key === 'ArrowRight') {
+        ml += 100;
+        box16.style.marginLeft = `${ml}px`;
+      }
+    });
+    // - 만약 keydown이벤트의 핸들러 함수 내부에서 변수 ml이 선언되면?
+    //   keydown이벤트가 발생할 때마다 변수 ml은 초기화됨
+    //   => 오른쪽 화살표를 아무리 많이 눌러도 ml은 항상 100인 상태가 됨
+    //   => 그래서 변순 ml은 keydown이벤트 바깥에서 선언되어야함
+  </script>
+  <hr />
+
+  <h3>입력 이벤트</h3>
+  <div id="box17">
+    <input type="text">
+    <p></p>
+  </div>
+  <script>
+    let box17 = document.getElementById('box17');
+    let input17 = box17.getElementsByTagName('input')[0];
+    let p17 = box17.getElementsByTagName('p')[0];
+    // getElementByTagName은 HTMLCollection을 반환하기 때문에 대괄호 표기법으로 자료의 순서값을 지정해줘야함.
+
+    input17.addEventListener('input', () => {
+      p17.textContent = input17.value;
+    })
+  </script>
+  <hr />
+
+  <div>
+    <input type="checkbox" id="checkbox18">
+    <p id="box18">BOX18</p>
+  </div>
+  <script>
+    let checkbox18 = document.getElementById('checkbox18');
+    let box18 = document.getElementById('box18');
+    checkbox18.addEventListener('change', () => {
+      // if(checkbox18.checked === true) {
+      //   box18.style.display = 'none';
+      // }else {
+      //   box18.style.display = 'block';
+      // }
+      box18.style.display = checkbox18.checked ? 'none' : 'block';
+    })
+  </script>
+</body>
+
+</html>
