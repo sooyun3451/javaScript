@@ -277,6 +277,11 @@
     // getElementByTagName은 HTMLCollection을 반환하기 때문에 대괄호 표기법으로 자료의 순서값을 지정해줘야함.
 
     input17.addEventListener('input', () => {
+      if(input17.value.length > 5) {
+        alert('5글자까지만 입력가능합니다.')
+        input17.disabled = true;
+        input17.value = input17.value.slice(0, 5);
+      }
       p17.textContent = input17.value;
     })
   </script>
@@ -297,6 +302,26 @@
       // }
       box18.style.display = checkbox18.checked ? 'none' : 'block';
     })
+  </script>
+  <hr />
+
+  <div id="box19">
+    <input type="radio" value="19-1" name="b19">
+    <input type="radio" value="19-2" name="b19">
+    <input type="radio" value="19-3" name="b19">
+    <input type="radio" value="19-4" name="b19">
+    <input type="radio" value="19-5" name="b19">
+  </div>
+  <div id="box20"></div>
+  <script>
+    let box19 = document.getElementById('box19');
+    let radios19 = box19.getElementsByTagName('input');
+    let box20 = document.getElementById('box20');
+    for(let i = 0; i < radios19.length; i++) {
+      radios19[i].addEventListener('change', () => {
+        box20.innerHTML = radios19[i].value;
+      })
+    }
   </script>
 </body>
 
