@@ -16,5 +16,90 @@
     <p>오름차순으로 정렬해서 출력하기</p>
     <p>번호 생성 버튼을 클릭할 때마다 새로운 번호 생성하기</p>
   </div>
+  <hr />
+  <div>
+    <button id="btnRun">로또 번호 생성하기</button>
+    <div id="lottoNumbers"></div>
+  </div>
+  <style>
+    #lottoNumbers ul {
+      display: flex;
+      gap: 4px;
+      padding: 0;
+      list-style: none;
+    }
+
+    #lottoNumbers li {
+      width: 40px;
+      border-radius: 50%;
+      line-height: 40px;
+      text-align: center;
+      background-color: blanchedalmond;
+    }
+
+    #lottoNumbers .yellow {
+      background-color: yellow;
+      color: #555;
+    }
+
+    #lottoNumbers .blue {
+      background-color: blue;
+      color: #fff;
+    }
+
+    #lottoNumbers .red {
+      background-color: red;
+      color: #fff;
+    }
+    
+    #lottoNumbers .green {
+      background-color: green;
+      color: #fff;
+    }
+
+    #lottoNumbers .black {
+      background-color: black;
+      color: #fff;
+    }
+  </style>
+  <script>
+    const btnLotto = document.getElementById('btnRun');
+
+    function generateLotto() {
+      let numbers = [];
+      let pringUi = document.getElementById('lottoNumbers');
+
+      while(numbers.length < 6) {
+        let rnd = Math.floor(Math.random() * 45) + 1;
+        // Math.ceil(Math.random() * 45)
+        if(!numbers.includes(rnd)) {
+          numbers.push(rnd);
+        }
+      }
+      numbers.sort((a, b) => a - b);
+
+      pringUi.innerHTML = '';
+      const ul = document.createElement('ul');
+      numbers.forEach(num => {
+        const li = document.createElement('li');
+        li.textContent = num;
+        if(num <= 10) {
+          li.classList.add('yellow');
+        }else if(num <= 20) {
+          li.classList.add('blue');
+        }else if(num <= 30) {
+          li.classList.add('red');
+        }else if(num <= 40) {
+          li.classList.add('green');
+        }else {
+          li.classList.add('black');
+        }
+        ul.appendChild(li);
+      });
+      pringUi.appendChild(ul);
+    }
+
+    btnLotto.addEventListener('click', generateLotto);
+  </script>
 </body>
 </html>
