@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>28-event</title>
+</head>
+<body>
+    <h3>focus와 blur</h3>
+    <p>
+        focus이벤트: 사용자가 입력창에 진입할 때 발생
+    </p>
+    <p>
+        blur이벤트: 사용자가 입력창을 벗어날 때 발생
+    </p>
+    <div id="box1">
+        <input type="text" id="username1">
+        <p id="msg1"></p>
+    </div>
+    <script>
+        let name1 = document.getElementById('username1');
+        let msg1 = document.getElementById('msg1');
+
+        name1.addEventListener('focus', () => {
+            msg1.textContent = '이름을 입력 중입니다.';
+        });
+        name1.addEventListener('blur', () => {
+            msg1.textContent = '입력이 완료되었습니다.';
+        });
+    </script>
+    <hr />
+
+    <div id="box2">
+        <input type="text" id="email2" placeholder="이메일을 입력해주세요.">
+        <p id="msg2"></p>
+    </div>
+    <script>
+        let email2 = document.getElementById('email2');
+        let msg2 = document.getElementById('msg2');
+
+        email2.addEventListener('focus', () => {
+            msg2.textContent = '';
+        })
+
+        email2.addEventListener('blur', () => {
+            // email2.value => email2 input의 입력값
+            // trim() => 문자열 앞뒤 공백 제거하기 
+            if(email2.value.trim() === '') {
+                msg2.textContent = '이메일을 반드시 입력해주세요';
+            }else {
+                msg2.textContent = '';
+            }
+        });
+
+    </script>
+    <hr />
+
+    <div id="box3">
+        <input type="text" placeholder="이름">
+        <input type="text" placeholder="주소">
+        <input type="text" placeholder="전화번호">
+    </div>
+    <script>
+        // let box3 = document.getElementById('box3');
+        // let b3input = box3.getElementsByTagName('input');
+        // for() {b3input}
+
+        let box3 = document.querySelectorAll('#box3 input');
+        box3.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.style.borderColor = 'blue';
+            })
+
+            input.addEventListener('blur', () => {
+                input.style.borderColor = 'red';
+            })
+        });
+    </script>
+    <hr />
+
+    <div id="box4">
+        <input type="text" placeholder="이름" id="name4">
+        <input type="number" placeholder="나이" id="age4">
+        <button id="button">확인</button>
+    </div>
+    <script>
+        let name4 = document.getElementById('name4');
+        let age4 = document.getElementById('age4');
+        let button4 = document.getElementById('button4');
+
+        button4.addEventListener('click', () => {
+            let valueName = name4.value.trim();
+            if(!valueName) {
+                name4.focus();
+            }else {
+                age4.focus();
+            }
+        });
+    </script>
+    <hr />
+
+    <h3>이벤트 핸들러</h3>
+    <div>
+        <button id="btn5">CLICK5</button>
+        <button id="btn6">CLICK6 - removeEvent</button>
+    </div>
+    <script>
+        let btn5 = document.getElementById('btn5');
+        let btn6 = document.getElementById('btn6');
+
+        function firstClick() {
+            console.log('5번 버튼의 첫번째 클릭 이벤트');
+        }
+
+        btn5.addEventListener('click', firstClick);
+        btn5.addEventListener('click', () => {
+            console.log('5번 버튼의 두번째 클릭 이벤트')
+        });
+
+        // 여기까지의 명령으로 btn5번을 클릭하면 2개의 이번트 동작이 모두 실행이됨.
+
+        function removeClick() {
+            btn5.removeEventListener('click', firstClick);
+        }
+
+        btn6.addEventListener('click', removeClick);
+    </script>
+    <hr />
+
+    <h3>이벤트 객체</h3>
+    <div><button id="btn7">CLICK</button></div>
+    <div><input type="text" id="input8"></div>
+    <div><a href="http://www.naver.com" id="link9">MOVE9</a></div>
+    <script>
+        document.getElementById('btn7').addEventListener('click', (e) => {
+            console.log('클릭한 요소: ', e.target);
+        });
+
+        document.getElementById('input8').addEventListener('keydown', (e) => {
+            console.log('누른 키: ', e.key);
+        });
+
+        document.getElementById('link9').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('9번 클릭 확인!');
+            console.log('9번 클릭 확인!');
+        })
+    </script>
+    <hr />
+
+    <h3>이벤트 위임</h3>
+    <div id="box10">
+        <button>1번</button>
+        <button>2번</button>
+        <button>3번</button>
+    </div>
+    <script>
+        document.getElementById('box10').addEventListener('click', function(e) {
+            // e.target: 이벤트 대상
+            // e.target.tagName: 이벤트 대상의 태그 이름. 대문자로 반환
+            // e.target.textContent: 이벤트 대상의 클 내용
+            if(e.target.tagName = 'BUTTON') {
+                console.log(e.target.textContent, '클릭!');
+            }else {
+                console.log('box10');
+            }
+        });
+    </script>
+    <hr />
+
+    <div>
+        <ul id="ul11">
+            <li class="active">홈</li>
+            <li>회사소개</li>
+            <li>오시는 길</li>
+        </ul>
+    </div>
+    <style>
+        #ul11 .active {
+            color: red;
+        }
+    </style>
+    <script>
+        let ul11 = document.getElementById('ul11');
+
+        ul11.addEventListener('click', (e) => {
+            if(e.target.tagName === 'LI') {
+               // let a = [...ul11.children];
+               // console.log(a);
+               // ul11.childred => ul11의 자식요소를 가리킴.
+               // ul11의 자식요소인 li를 모두 선택 => 배열로 저장
+               // [...배열이름]의 스프레드 연산자를 사용하면 배열이 그대로 복사됨.
+               [...ul11.children].forEach(li => li.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+    </script>
+    <hr />
+
+    <div id="box12"></div>
+    <!-- 
+        html문서에 처음부터 작성된 요소 => 정적요소
+        자바스크립트 명령에 의해 만들어진 요소 => 동적요소
+    -->
+    <script>
+        let box12 = document.querySelector('#box12');
+
+        for(let i = 0; i < 5; i++) {
+            let btn = document.createElement('button');
+            btn.textContent = `버튼${i + 1}`;
+            box12.appendChild(btn);
+        }
+
+        box12.addEventListener('click', function(e) {
+            if(e.target.tagName === 'BUTTON') {
+                console.log(`${e.target.textContent}번이 클릭되었습니다.`);
+                console.log('currentTarget:', e.currentTarget);
+                console.log('target:', e.target);
+            }
+        });
+    </script>
+    <hr />
+
+    <h3>이벤트 전파 - 캡쳐링과 버블링</h3>
+    <div id="box13">
+        * 버블링으로 실행
+        <button id="btn13">클릭</button>
+    </div>
+    <script>
+        document.getElementById('box13').addEventListener('click', () => {
+            console.log('바깥의 div13 클릭');
+        });
+        document.getElementById('btn13').addEventListener('click', () => {
+            console.log('안쪽의 button13 클릭');
+        });
+        // 버튼과 버튼의 부모영역에 모두 클릭 이벤트가 등록되어 있음.
+        // 이때 버튼을 클릭하면 버튼과 부모영역에 적용된 이벤트가 모두 동작이됨
+        // 이러한 현상을 버블링이라고 함.
+    </script>
+
+    <div id="box14">
+        * 버블링 방지
+        <button id="btn14">클릭</button>
+    </div>
+    <script>
+        document.getElementById('box14').addEventListener('click', () => {
+            console.log('바깥의 div14 클릭');
+        });
+        document.getElementById('btn14').addEventListener('click', (e) => {
+            e.stopPropagation(); // 버블링되는 이벤트 전파를 막아주는 명령
+            console.log('안쪽의 button14 클릭');
+        });
+    </script>
+
+    <div id="box15">
+        * 캡쳐링으로 실행
+        <button id="btn15">클릭</button>
+    </div>
+    <script>
+        document.getElementById('box15').addEventListener('click', () => {
+            console.log('바깥의 div15 클릭');
+        }, true); // 캡쳐링
+        document.getElementById('btn15').addEventListener('click', (e) => {
+            console.log('안쪽의 button15 클릭');
+        }, true);
+    </script>
+</body>
+</html>

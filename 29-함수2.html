@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>함수2</title>
+</head>
+<body>
+    <h3>즉시 실행 함수</h3>
+    <script>
+        (function(){
+            let msg = 'hi!';
+            console.log(msg);
+        })();
+
+        // console.log(msg);
+
+        // 일반함수와 즉시 실행함수의 스코프가 같은 의미인것은 맞음
+        // 다만, 즉시 실행함수가 사용되는 목적에 대해 집중해서 이해할 것
+        // => 즉시 실행함수는 정의가 됨과 동시에 실행됨.
+        // => 이때, msg는 완전히 지역적이고 일회성의 스코프에서만 존재함.
+        // => 외부의 간섭없이, 오염없이 코드를 즉시 실행하고 버리는 패턴에서 사용
+        // => 스코프를 안전하게 한 번 쓰고 버리기 위한 구조적 의도가 있음.
+    </script>
+    
+    <script>
+        // 클로저 함수
+        function outer1() {
+            let msg1 = 'hello!';
+            
+            function inner1() {
+                console.log(msg1);
+            }
+
+            return inner1;
+        }
+        let a1 = outer1();
+        a1(); // hello!
+
+        function makeCount() {
+            let count = 0;
+
+            return function() {
+                count++;
+                console.log('현재 카운트:', count);
+            }
+        }
+        let counter = makeCount();
+        counter();
+        counter();
+        counter();
+
+        function counter2() {
+            let c = 0;
+            c++;
+            console.log('변수 c:', c);
+        }
+        counter2();
+        counter2();
+        counter2();
+    </script>
+
+    <script>
+        // call() - this를 명시적으로 지정할 수 있음.
+        function sayHi() {
+            console.log('안녕! 나는 ' + this.name + '라고 해.');
+        }
+        let user = {
+            name: '홍길동'
+        }
+        sayHi(); // 결과: this.name은 빈 문자열로 처리됨.
+        sayHi.call(user); // 결과: this.name자리에 '홍길동'이 전달됨.
+        // => sayHi()함수 내부에 사용된 this의 대상으로 user객체를 부름.
+
+        let student = {
+            name: '홍길서',
+            greeting() {
+                console.log(this.name + '님, 반갑습니다.');
+            }
+        }
+
+        let teacher = {
+            name: '하나'
+        }
+
+        student.greeting(); // 홍길서님, 반갑습니다.
+        student.greeting.call(teacher); // 하나님, 반갑습니다.
+
+        function print() {
+            console.log(arguments);
+        }
+
+        let a2 = print('a', 'b', 'c');
+
+        function print2() {
+            let aa = Array.prototype.slice.call(arguments);
+            console.log(aa);
+        }
+
+        let a3 = print('aq', 'bq', 'cq');
+    </script>
+</body>
+</html>
