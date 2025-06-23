@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>30-비동기</title>
+</head>
+<body>
+  <script>
+    const promise01 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve('성공입니다.');
+        reject('문제가 발생했습니다!');
+      }, 1000);
+    });
+
+    promise01
+      .then(result => {
+        console.log('성공 결과:', result);
+      })
+      .catch(error => {
+        console.error('실패:', error);
+      });
+
+      const promise02 = () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve('두 번째 프로미스');
+          }, 1000);
+        });
+      }
+
+      promise02()
+        .then(result1 => {
+          console.log('1단계 결과: ', result1); // 1단계 결과:  두 번째 프로미스
+          return `${result1} 처리완료`;
+        })
+        .then(result2 => {
+          console.log('2단계 결과:', result2); // 2단계 결과: 두 번째 프로미스 처리완료
+          return `${result2} 최종완료`
+        })
+        .catch(error => console.error('오류발생: ', error));
+
+      function fetchData3() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve('데이터가 도착했습니다.');
+          }, 1000)
+        });
+      }
+
+      async function loadData() {
+        const result = await fetchData3();
+        console.log('loadData 결과:', result);
+      }
+
+      loadData();
+      /*
+        loadData함수 내부의 result변수값을 수집하는 시점은 fetchData3()의 비동기 동작이 모두 완료된 시점으로 설정해야함.
+        이를 위해 loadData함수도 비동기처리 되어야 함.
+        loadData함수를 비동기 처리하기 위해 함수 선언 안앞에 async키워드를 붙이고,
+        함수내부 동작 중 비동기 처리되어야 할 명령앞에 await를 붙여주면 됨.
+      */
+  </script>
+</body>
+</html>
