@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>프로젝트03-음료주문키오스크</title>
+  <link rel="stylesheet" href="css/style_pj03.css">
+</head>
+<body>
+  <div id="wrap">
+    <h2>음료 주문 키오스크</h2>
+    <div id="orderBtn">
+      <ul>
+        <li><button data-drink="coffee">커피 (3,000원)</button></li>
+        <li><button data-drink="latte">라떼 (3,500원)</button></li>
+        <li><button data-drink="icetea">아이스티 (2,500원)</button></li>
+      </ul>
+    </div>
+    <div id="orderView">
+      <h2>주문 확인서</h2>
+      <div id="orderList"></div>
+      <div id="total">총 합계: <span id="totalPrice">0</span>원</div>
+    </div>
+  </div>
+  <script src="js/script_pj03.js"></script>
+</body>
+</html>
