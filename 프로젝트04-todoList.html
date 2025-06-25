@@ -16,6 +16,20 @@
       <ul id="todo-list"></ul>
     </div>
   </div>
+  <!-- 템플릿: 화면에 노출되지 얺음. -->
+  <template id="todo-template">
+    <li>
+      <div class="left">
+        <input type="checkbox" name="checkDone" class="checkDone" checked>
+        <p class="content"></p>
+      </div>
+      <div class="rigth">
+        <span class="date"></span>
+        <button class="btnUpdate">수정</button>
+        <button class="btnRemove">삭제</button>
+      </div>
+    </li>
+  </template>
   <script src="js/script_pj04.js"></script>
 </body>
 </html>
