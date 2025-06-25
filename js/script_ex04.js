@@ -23,27 +23,27 @@ function renderTodo() {
 
     ul.innerHTML = `
       <li>
-      <div class="left">
-        <input type="checkbox" class="checkDone"></input>
-        <p class="content">${todo.content}</p>
-      </div>
-      <div class="right">
-      <span>${todo.createdAt.toLocaleString()}</span>
-      <button class="updateBtn">수정</button>
-      <button class="removeBtn">삭제</button>
-      </div>
+        <div class="left">
+          <input type="checkbox" class="checkDone"></input>
+          <p class="content">${todo.content}</p>
+        </div>
+        <div class="right">
+          <span>${todo.createdAt.toLocaleString()}</span>
+          <button class="updateBtn">수정</button>
+          <button class="removeBtn">삭제</button>
+        </div>
       </li>
     `;
 
-    const li = document.querySelector('li');
-    li.className = todo.isDone ? 'done' : '';
+    const li = document.querySelector("li");
+    li.className = todo.isDone ? "done" : "";
 
-    const checkbox = document.querySelector('.checkDone');
+    const checkbox = document.querySelector(".checkDone");
     checkbox.checked = todo.isDone;
-    checkbox.addEventListener('change', () => {
+    checkbox.addEventListener("change", () => {
       todos[i].isDone = checkbox.checked;
       renderTodo();
-    })
+    });
   });
   inputEl.value = "";
 }
