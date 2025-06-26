@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트05-todoList</title>
+  <link rel="stylesheet" href="css/style_pj05.css">
+</head>
+<body>
+  <div id="wrapper">
+    <h2>TODO LIST</h2>
+    <div class="todoForm">
+      <input type="text" placeholder="할 일을 입력해주세요." id="todoInput" name="todoInput">
+      <button id="addBtn">추가</button>
+    </div>
+    <div class="todoList">
+      <ul id="todoList"></ul>
+    </div>
+  </div>
+
+  <template id="todoTemplate">
+    <li id="todoListLi">
+      <div class="left">
+        <input type="checkbox" name="checkDone" class="checkDone">
+        <p class="content"></p>
+      </div>
+      <div class="right">
+        <span class="date"></span>
+        <button class="updateBtn">수정</button>
+        <button class="removeBtn">삭제</button>
+      </div>
+    </li>
+  </template>
+  <script src="js/ex_pj05.js"></script>
+</body>
+</html>

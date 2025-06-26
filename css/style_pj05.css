@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+ul,li {
+  list-style: none;
+}
+
+#todoListLi .left{
+  display: flex;
+}
+
+#todoList .done .content,
+#todoList .done .date {
+  text-decoration: line-through;
+}

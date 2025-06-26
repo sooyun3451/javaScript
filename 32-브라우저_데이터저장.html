@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>32-브라우저_데이터저장</title>
+</head>
+<body>
+  <script>
+    localStorage.setItem('color', 'black');
+    localStorage.setItem('color', 'red');
+
+    let color = localStorage.getItem('color');
+    console.log(color);
+    localStorage.removeItem('color');
+
+    // 배열 또는 객체
+    let todos = [
+      {id: 1, content: '청소', done: false},
+      {id: 2, content: '운동', done: true},
+      {id: 3, content: '빨래', done: false}
+    ];
+
+    localStorage.setItem('todos', JSON.stringify(todos));
+
+    let todosData = localStorage.getItem('todos');
+    let todosDataArr = JSON.parse(todosData);
+    console.log(typeof(todosData));
+    console.log(typeof(todosDataArr));
+
+    sessionStorage.setItem('color', 'red');
+  </script>
+</body>
+</html>
