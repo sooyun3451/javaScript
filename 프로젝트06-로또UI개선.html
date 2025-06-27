@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트06-로또UI개선</title>
+  <link rel="stylesheet" href="css/style_pj06.css">
+</head>
+<body>
+  <div id="wrapper">
+    <h1>로또 당첨 확인하기</h1>
+    <div class="slot_wrapper" id="slots">
+      <div class="slot" data-index="0"></div>
+      <div class="slot" data-index="1"></div>
+      <div class="slot" data-index="2"></div>
+      <div class="slot" data-index="3"></div>
+      <div class="slot" data-index="4"></div>
+      <div class="slot" data-index="5"></div>
+    </div>
+    <div class="keypad" id="keypad"></div>
+    <div class="btns">
+      <button id="playBtn">당첨 확인하기</button>
+      <button id="resetBtn">리셋</button>
+    </div>
+    <div class="result">
+      <div id="lottoNumbers"></div>
+      <div id="bonusNumber"></div>
+      <div id="compareResult"></div>
+    </div>
+  </div>
+  <script src="js/script_pj06.js"></script>
+</body>
+</html>
