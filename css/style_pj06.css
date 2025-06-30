@@ -33,6 +33,16 @@
   color: #fff;
 }
 
+.slot_wrapper .matched {
+  background-color: #008000;
+  border-color: #008000;
+}
+
+.slot_wrapper .matchedB {
+  background-color: #e90074;
+  border-color: #e90074;
+}
+
 .keypad {
   display: flex;
   flex-wrap: wrap;
@@ -49,4 +59,33 @@
 
 .keypad button:disabled {
   background-color: #aaa;
+}
+
+.result {
+  margin-top: 60px;
+}
+
+.result > div {
+  margin-bottom: 40px;
+}
+
+.result .label {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.result .numbers {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.result .numbers span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 38px;
+  color: #182c79;
+  background-color: #dbe1fa;
 }

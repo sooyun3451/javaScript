@@ -1,6 +1,13 @@
 const selectedNumbers = []; // 슬롯 데이터를 저장하는 배열
-const slotsEl = document.querySelectorAll('.slot'); // forEach적용을 위해
-const keypad = document.getElementById('keypad');
+const slotsEl = document.querySelectorAll(".slot"); // forEach적용을 위해
+const keypad = document.getElementById("keypad");
+
+const submitBtnEl = document.getElementById("playBtn");
+const resetBtnEl = document.getElementById("resetBtn");
+
+const mainEl = document.getElementById("lottoNumbers");
+const bonusEl = document.getElementById("bonusNumber");
+const resultEl = document.getElementById("compareResult");
 
 // 번호키 생성하기 - 1~45회 반복되는 반복문 설정
 // (1) 새로운 button태그 노드를 만들어 btn변수에 할당
@@ -21,19 +28,19 @@ const keypad = document.getElementById('keypad');
 //    (ㄹ) 클릭한 버튼을 비활성화 => desabled 속성으로
 //    (ㄷ) 슬롯배열에 추가하기 => push()
 // (3) keypad변수의 자식노드로 btn변수 설정
-for(let i = 1; i <= 45; i++) {
-  const btn = document.createElement('button');
+for (let i = 1; i <= 45; i++) {
+  const btn = document.createElement("button");
   btn.textContent = i;
   btn.value = i;
   btn.id = `btn${i}`;
-  btn.addEventListener('click', function() {
-    if(selectedNumbers.length >= 6) return;
+  btn.addEventListener("click", function () {
+    if (selectedNumbers.length >= 6) return;
     const number = parseInt(this.value);
     selectedNumbers.push(number);
     const idx = selectedNumbers.length - 1;
     const slot = slotsEl[idx];
     slot.textContent = number;
-    slot.classList.add('active');
+    slot.classList.add("active");
     slot.dataset.value = number;
     this.disabled = true;
   });
@@ -48,7 +55,7 @@ slotsEl.forEach((slot, i) => {
   //    2) 만약 1번이 유효하지 않으면 여기서 명령 종료(반환)
   //    - 슬롯 데이터 배열에서 제거
   //    3) 제거할 데이터의 인덱스값(자리값, 순서값)을 저장 => indexOf()
-  //    4) 슬롯 데이터 배열에서 3번에 해당하는 값을 제거 
+  //    4) 슬롯 데이터 배열에서 3번에 해당하는 값을 제거
   //      => splice(인덱스번호, 삭제할 데이터 개수)
   //      이때, 3번의 값이 -1이 아닐때만 동작하도록 만들기 => 안전장치
   //      왜 -1인가? indexOf()의 명령으로 자료의 순서값을 저장할때 다상 배열에
@@ -74,25 +81,25 @@ slotsEl.forEach((slot, i) => {
   //      a) 각 데이터와 같은 인덱스값을 가지는 슬롯에 내용 채우기
   //      b) 각 데이터와 같은 인덱스값을 가지는 슬롯에 active클래스 추가
   //      c) 각 데이터와 같은 인덱스값을 가지는 슬롯의 dataset의 value속성 추가
-  slot.addEventListener('click', () => {
+  slot.addEventListener("click", () => {
     const value = parseInt(slot.dataset.value);
-    if(!value) return;
+    if (!value) return;
     const idx = selectedNumbers.indexOf(value);
-    if(idx !== -1) selectedNumbers.splice(idx, 1);
-    slot.textContent = '';
-    slot.classList.remove('active');
+    if (idx !== -1) selectedNumbers.splice(idx, 1);
+    slot.textContent = "";
+    slot.classList.remove("active");
     delete slot.dataset.value;
     const btn = document.getElementById(`btn${value}`);
-    if(btn) btn.disabled = false;
-    slotsEl.forEach(s => {
-      s.textContent = '';
-      s.classList.remove('active');
+    if (btn) btn.disabled = false;
+    slotsEl.forEach((s) => {
+      s.textContent = "";
+      s.classList.remove("active");
       delete s.dataset.value;
     });
 
     selectedNumbers.forEach((num, idx) => {
       slotsEl[idx].textContent = num;
-      slotsEl[idx].classList.add('active');
+      slotsEl[idx].classList.add("active");
       slotsEl[idx].dataset.value = num;
     });
   });
@@ -106,29 +113,88 @@ slotsEl.forEach((slot, i) => {
 //    4) 2번에서 7번째 숫자를 수집해 저장 => 보너스 번호
 //    5) 당첨번호와 보너스번호를 객체로 묶어 반환하기
 function generateLotto() {
-  const allNumbers = Array.from({length:45}, (_, i) => i + 1);
+  const allNumbers = Array.from({ length: 45 }, (_, i) => i + 1);
   const shuffled = allNumbers.sort(() => 0.5 - Math.random());
 
   const main = shuffled.slice(0, 6).sort((a, b) => a - b);
   const bonus = shuffled[6];
 
-  return {main, bonus};
+  return { main, bonus };
+  // 객체를 표현하는 방법
+  // 리턴값 {main, bonus}는 객체 유형의 자료
+  // main속성의 값으로 main변수를 할당하고,
+  // bonus속성의 값으로 bonus변수를 할당한다는 의미
+  // 즉, 아래와 같은 형태로 리턴값을 만들어야함
+  // {
+  //    main: main
+  //    bonus: bonus
+  // }
+  // 이때 프로퍼티(속성)의 이름과 값으로 사용하는 변수의 이름을 일부러 일치시켜
+  // 다음과 같이 단축해서 쓸 수 있음
+  // {
+  //    main,
+  //    bonus
+  // }
+  // 이렇게 단축해 표현한 값을 한 줄로 나란히 작성해 표현할 수 있음.
+  // {main, bonus}
 }
-console.log(generateLotto());
-// 객체를 표현하는 방법
-// 리턴값 {main, bonus}는 객체 유형의 자료
-// main속성의 값으로 main변수를 할당하고, 
-// bonus속성의 값으로 bonus변수를 할당한다는 의미
-// 즉, 아래와 같은 형태로 리턴값을 만들어야함
-// {
-//    main: main
-//    bonus: bonus
-// }
-// 이때 프로퍼티(속성)의 이름과 값으로 사용하는 변수의 이름을 일부러 일치시켜
-// 다음과 같이 단축해서 쓸 수 있음
-// {
-//    main,
-//    bonus
-// }
-// 이렇게 단축해 표현한 값을 한 줄로 나란히 작성해 표현할 수 있음.
-// {main, bonus}
+
+// 당첨 확인버튼 클릭 시 호출할 함수
+//    1) 만약 슬롯 데이터 배열의 길이가 6이 아니라면
+//      => 경고창: 번호 6개를 선택해주세요.
+//      => 명령 반환하기
+//    2) 당첨 번호 저장하기 =>  generateLotto() 함수 호출하기
+//    3) 당첨 번호 화면에 출력하기
+//    4) 보너스 번호 화면에 출력하기
+function compareLotto() {
+  if (selectedNumbers.length !== 6) {
+    alert("번호 6개를 선택해주세요");
+    return;
+  }
+
+  const { main: mainNumbers, bonus: bonusNumber } = generateLotto();
+
+  // forEach는 반환값 X. join()메서드 처리 불가
+  // map()는 새로운 배열을 반환값으로 주기때문에 join()메서드를 사용애 하나의 문자열로 연결시킬 수 있음
+  const displayLotto = mainNumbers.map((n) => `<span>${n}</span>`).join("");
+  mainEl.innerHTML = `<p class="label">당첨 번호</p><p class="numbers">${displayLotto}</p>`;
+  bonusEl.innerHTML = `<p class="label">보너스 번호</p><p class="numbers"><span>${bonusNumber}</span></p>`;
+
+  const matched = selectedNumbers.filter((n) => mainNumbers.includes(n));
+  const bonusMatched = selectedNumbers.includes(bonusNumber);
+
+  let resultText = `일치한 번호 수: ${matched.length}개`;
+  if (bonusMatched) {
+    resultText += `+ 보너스 번호 일치`;
+  } else {
+    resultText += `+ 보너스 번호 불일치`;
+  }
+
+  resultEl.innerHTML = resultText;
+
+  slotsEl.forEach((slot) => {
+    const val = parseInt(slot.dataset.value);
+    if (mainNumbers.includes(val)) slot.classList.add("matched");
+    if (mainNumbers === val) slot.classList.add("matchedB");
+  });
+}
+
+function resetLotto() {
+  selectedNumbers.length = 0;
+
+  slotsEl.forEach((slot) => {
+    slot.textContent = "";
+    slot.classList.remove("active", "matched", "matchedB");
+    delete slot.dataset.value;
+  });
+
+  const allBtns = keypad.querySelectorAll("button");
+  allBtns.forEach((btn) => (btn.disabled = false));
+
+  mainEl.innerHTML = '';
+  bonusEl.innerHTML = '';
+  resultEl.innerHTML = '';
+}
+
+submitBtnEl.addEventListener("click", compareLotto);
+resetBtnEl.addEventListener("click", resetLotto);
