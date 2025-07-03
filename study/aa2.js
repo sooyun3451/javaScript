@@ -1,0 +1,1 @@
+export let aa2 = 'aa2 변수입니다.'

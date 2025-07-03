@@ -123,7 +123,6 @@ function renderTodo() {
     });
     printListEl.appendChild(cloneLi);
   });
-
 }
 
 // (2) 1번 함수 호출해 실행하기

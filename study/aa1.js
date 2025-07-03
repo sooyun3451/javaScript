@@ -1,0 +1,1 @@
+export let aa1 = 'aa1 변수입니다.';
